@@ -5,46 +5,46 @@ resource "helm_release" "node_termination_handler" {
   chart      = "aws-node-termination-handler"
   repository = "https://aws.github.io/eks-charts/"
 
-  set = [ 
+  set = [
     {
-        name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-        value = aws_iam_role.node_termination_handler.arn
+      name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      value = aws_iam_role.node_termination_handler.arn
     },
     {
-        name  = "awsRegion"
-        value = var.region
+      name  = "awsRegion"
+      value = var.region
     },
     {
-        name  = "queueURL"
-        value = aws_sqs_queue.node_termination.url
+      name  = "queueURL"
+      value = aws_sqs_queue.node_termination.url
     },
     {
-        name  = "enableSqsTerminationDraining"
-        value = true
+      name  = "enableSqsTerminationDraining"
+      value = true
     },
     {
-        name  = "enableSpotInterruptionDraining"
-        value = true
+      name  = "enableSpotInterruptionDraining"
+      value = true
     },
     {
-        name  = "enableRebalanceMonitoring"
-        value = true
+      name  = "enableRebalanceMonitoring"
+      value = true
     },
     {
-        name  = "enableRebalanceDraining"
-        value = true
+      name  = "enableRebalanceDraining"
+      value = true
     },
     {
-        name  = "enableScheduledEventDraining"
-        value = true
+      name  = "enableScheduledEventDraining"
+      value = true
     },
     {
-        name  = "deleteSqsMsgIfNodeNotFound"
-        value = true
+      name  = "deleteSqsMsgIfNodeNotFound"
+      value = true
     },
     {
-        name  = "checkTagBeforeDraining"
-        value = false
+      name  = "checkTagBeforeDraining"
+      value = false
     }
   ]
 }

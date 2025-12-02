@@ -23,7 +23,7 @@ variable "ssm_public_subnets" {
   type        = list(string)
 }
 
-  variable "ssm_private_subnets" {
+variable "ssm_private_subnets" {
   description = "SSM ID sotred to Private Subnet ID where the project will be created"
   type        = list(string)
 }

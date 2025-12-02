@@ -4,9 +4,9 @@ region       = "us-east-1"
 k8s_version = "1.34"
 
 auto_scale_options = {
-  min     = 1
+  min     = 2
   max     = 3
-  desired = 1
+  desired = 2
 }
 
 nodes_instances_sizes = [

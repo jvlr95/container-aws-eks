@@ -10,32 +10,32 @@ resource "helm_release" "cluster_autoscaler" {
 
   set = [
     {
-        name  = "replicaCount"
-        value = 1
-    }, 
-    {
-        name  = "awsRegion"
-        value = var.region
+      name  = "replicaCount"
+      value = 1
     },
     {
-        name  = "rbac.serviceAccount.create"
-        value = true
-    }, 
-    {
-        name  = "rbac.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-        value = aws_iam_role.autoscaler.arn
+      name  = "awsRegion"
+      value = var.region
     },
     {
-        name  = "autoscalingGroups[0].name"
-        value = aws_eks_node_group.main.resources[0].autoscaling_groups[0].name
-    }, 
-    {
-        name  = "autoscalingGroups[0].maxSize"
-        value = lookup(var.auto_scale_options, "max")
+      name  = "rbac.serviceAccount.create"
+      value = true
     },
     {
-        name  = "autoscalingGroups[0].minSize"
-        value = lookup(var.auto_scale_options, "min")
+      name  = "rbac.serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      value = aws_iam_role.autoscaler.arn
+    },
+    {
+      name  = "autoscalingGroups[0].name"
+      value = aws_eks_node_group.main.resources[0].autoscaling_groups[0].name
+    },
+    {
+      name  = "autoscalingGroups[0].maxSize"
+      value = lookup(var.auto_scale_options, "max")
+    },
+    {
+      name  = "autoscalingGroups[0].minSize"
+      value = lookup(var.auto_scale_options, "min")
     },
   ]
 
