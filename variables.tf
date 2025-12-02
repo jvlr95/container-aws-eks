@@ -13,6 +13,21 @@ variable "k8s_version" {
   type        = string
 }
 
+#variable "addon_cni_version" {
+#  type = string
+#  default = "v1.20.4-eksbuild.2"
+#}
+
+#variable "addon_coredns_version" {
+#  type = string
+#  default = "v1.12.3-eksbuild.1"
+#}
+
+#variable "addon_kubeproxy_version" {
+#  type = string
+#  default = "v1.34.0-eksbuild.2"
+#}
+
 variable "ssm_vpc" {
   description = "SSM ID sotred to VPC ID where the project will be created"
   type        = string
