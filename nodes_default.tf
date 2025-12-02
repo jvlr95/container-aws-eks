@@ -28,11 +28,11 @@ resource "aws_eks_node_group" "main" {
 
   depends_on = [aws_eks_access_entry.nodes]
 
-  #  lifecycle {
-  #    ignore_changes = [
-  #      scaling_config[0].desired_size
-  #    ]
-  #  }
+  lifecycle {
+    ignore_changes = [
+      scaling_config[0].desired_size
+    ]
+  }
 
   timeouts {
     create = "60m"
