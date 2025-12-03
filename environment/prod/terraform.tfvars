@@ -35,12 +35,12 @@ ssm_pod_subnets = [
 ]
 
 karpenter_capacity = [{
-  name = "karpenter-eks-capacity"
-  workload = "karpenter-eks-workload"
-  ami_family = "AL2023"
-  ami_ssm = "/aws/service/eks/optimized-ami/1.34/amazon-linux-2023/x86_64/standard/recommended/image_id"
-  instance_family = [ "t3" ]
-  instance_sizes = [ "micro", "small" ]
-  capacity_type = [ "on-demand" ]
-  availability_zones = [ "us-east-1a", "us-east-1b", "us-east-1c" ]
+  name               = "karpenter-eks-capacity"
+  workload           = "karpenter-eks-workload"
+  ami_family         = "AL2023"
+  ami_ssm            = "/aws/service/eks/optimized-ami/1.34/amazon-linux-2023/x86_64/standard/recommended/image_id"
+  instance_family    = ["t3"]
+  instance_sizes     = ["micro", "small"]
+  capacity_type      = ["on-demand"]
+  availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
 }]
