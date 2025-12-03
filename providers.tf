@@ -15,3 +15,12 @@ provider "helm" {
     token                  = data.aws_eks_cluster_auth.default.token
   }
 }
+
+terraform {
+  required_providers {
+    kubectl = {
+      source  = "gavinbunney/kubectl"
+      version = ">= 1.7.0"
+    }
+  }
+}
