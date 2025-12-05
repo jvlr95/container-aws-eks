@@ -32,6 +32,6 @@ resource "helm_release" "karpenter" {
 
   depends_on = [
     aws_eks_cluster.main,
-    aws_eks_node_group.main
+    aws_eks_fargate_profile.karpenter
   ]
 }
