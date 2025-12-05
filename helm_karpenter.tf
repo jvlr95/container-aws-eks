@@ -9,20 +9,24 @@ resource "helm_release" "karpenter" {
 
   set = [
     {
-        name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-        value = aws_iam_role.karpenter.arn
+      name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
+      value = aws_iam_role.karpenter.arn
     },
     {
-        name  = "settings.clusterName"
-        value = var.project_name
+      name  = "settings.clusterName"
+      value = var.project_name
     },
     {
-        name  = "settings.clusterEndpoint"
-        value = aws_eks_cluster.main.endpoint
+      name  = "settings.clusterEndpoint"
+      value = aws_eks_cluster.main.endpoint
     },
     {
-        name  = "aws.defaultInstanceProfile"
-        value = aws_iam_instance_profile.nodes.name
+      name  = "aws.defaultInstanceProfile"
+      value = aws_iam_instance_profile.nodes.name
+    },
+    {
+      name = "seetings.interruptionQueue"
+      value = aws_sqs_queue.karpenter.name
     }
   ]
 
