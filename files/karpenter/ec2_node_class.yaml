@@ -7,12 +7,6 @@ spec:
   amiFamily: "${AMI_FAMILY}"
   amiSelectorTerms:
   - id: ${AMI_ID}
-  blockDeviceMappings:
-  - deviceName: "/dev/xvda"
-    ebs:
-      volumeSize: ${DISK_SIZE}
-      volumeType: gp3
-      deleteOnTermination: True
   securityGroupSelectorTerms:
   - id: ${SECURITY_GROUP_ID}
   subnetSelectorTerms:
