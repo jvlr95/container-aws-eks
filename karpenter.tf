@@ -7,6 +7,7 @@ resource "kubectl_manifest" "ec2_node_class" {
     AMI_FAMILY        = var.karpenter_capacity[count.index].ami_family
     SECURITY_GROUP_ID = aws_eks_cluster.main.vpc_config[0].cluster_security_group_id
     SUBNETS           = data.aws_ssm_parameter.pod_subnets[*].value
+    DISK_SIZE         = tostring(var.karpenter_capacity[count.index].disk_size)
   })
 }
 
