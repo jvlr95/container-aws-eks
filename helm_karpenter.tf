@@ -25,7 +25,7 @@ resource "helm_release" "karpenter" {
       value = aws_iam_instance_profile.nodes.name
     },
     {
-      name = "seetings.interruptionQueue"
+      name  = "seetings.interruptionQueue"
       value = aws_sqs_queue.karpenter.name
     }
   ]
