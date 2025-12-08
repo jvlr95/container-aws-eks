@@ -3,17 +3,6 @@ region       = "us-east-1"
 
 k8s_version = "1.34"
 
-auto_scale_options = {
-  min     = 2
-  max     = 3
-  desired = 2
-}
-
-nodes_instances_sizes = [
-  "t3.micro",
-  "t3.small"
-]
-
 ssm_vpc = "/personal-vpc/vpc/id"
 
 ssm_public_subnets = [
@@ -43,6 +32,7 @@ karpenter_capacity = [{
   instance_sizes     = ["micro", "small"]
   capacity_type      = ["on-demand"]
   availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+  disk_size          = 20
   },
   {
     name               = "production"
@@ -53,5 +43,6 @@ karpenter_capacity = [{
     instance_sizes     = ["small"]
     capacity_type      = ["on-demand", "spot"]
     availability_zones = ["us-east-1a", "us-east-1b", "us-east-1c"]
+    disk_size          = 40
   }
 ]
