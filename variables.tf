@@ -33,6 +33,20 @@ variable "ssm_pod_subnets" {
   type        = list(string)
 }
 
+variable "auto_scale_options" {
+  type = object({
+    min     = number
+    max     = number
+    desired = number
+  })
+  description = "AutoScale config"
+}
+
+variable "nodes_instance_sizes" {
+  type        = list(string)
+  description = "Size instance"
+}
+
 variable "karpenter_capacity" {
   type = list(object({
     name               = string
@@ -43,7 +57,6 @@ variable "karpenter_capacity" {
     instance_sizes     = list(string)
     capacity_type      = list(string)
     availability_zones = list(string)
-    disk_size          = number
   }))
 }
 
@@ -77,11 +90,11 @@ variable "addon_metrics_server" {
   description = "Metrics Server Version"
 }
 
-# variable "addon_ebs_csi_version" {
-#   type        = string
-#   default     = "v1.39.0-eksbuild.1"
-#   description = "Versão do Addon do EBS CSI"
-# }
+variable "addon_ebs_csi_version" {
+  type        = string
+  default     = "v1.53.0-eksbuild.1"
+  description = "EBS CSI Version"
+}
 
 # variable "addon_efs_csi_version" {
 #   type        = string
