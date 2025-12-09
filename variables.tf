@@ -84,26 +84,21 @@ variable "addon_pod_identity_version" {
   description = "Pod Identity Version"
 }
 
-variable "addon_metrics_server" {
-  type        = string
-  default     = "v0.8.0-eksbuild.5"
-  description = "Metrics Server Version"
-}
-
 variable "addon_ebs_csi_version" {
   type        = string
   default     = "v1.53.0-eksbuild.1"
   description = "EBS CSI Version"
 }
 
-# variable "addon_efs_csi_version" {
-#   type        = string
-#   default     = "v2.1.4-eksbuild.1"
-#   description = "Versão do Addon do EFS CSI"
+variable "addon_efs_csi_version" {
+  type        = string
+  default     = "v2.1.15-eksbuild.1"
+  description = "EFS CSI Version"
 
-# }
+}
 
-# variable "addon_s3_csi_version" {
-#   type        = string
-#   default     = "v1.11.0-eksbuild.1"
-#   description = "Versão do Addon do S3 CSI"
+variable "addon_s3_csi_version" {
+  type        = string
+  default     = "v2.2.0-eksbuild.1"
+  description = "S3 CSI Version"
+}
