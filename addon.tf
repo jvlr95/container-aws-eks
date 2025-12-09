@@ -37,19 +37,6 @@ resource "aws_eks_addon" "kubeproxy" {
   ]
 }
 
-resource "aws_eks_addon" "metrics-server" {
-  cluster_name = aws_eks_cluster.main.name
-  addon_name   = "metrics-server"
-
-  addon_version               = var.addon_metrics_server
-  resolve_conflicts_on_create = "OVERWRITE"
-  resolve_conflicts_on_update = "OVERWRITE"
-
-  depends_on = [
-    aws_eks_access_entry.nodes
-  ]
-}
-
 resource "aws_eks_addon" "pod_identity" {
   cluster_name = aws_eks_cluster.main.name
   addon_name   = "eks-pod-identity-agent"
@@ -78,28 +65,28 @@ resource "aws_eks_addon" "ebs_csi" {
 }
 
 
-# resource "aws_eks_addon" "efs_csi" {
-#   cluster_name = aws_eks_cluster.main.name
-#   addon_name   = "aws-efs-csi-driver"
+resource "aws_eks_addon" "efs_csi" {
+  cluster_name = aws_eks_cluster.main.name
+  addon_name   = "aws-efs-csi-driver"
 
-#   addon_version               = var.addon_efs_csi_version
-#   resolve_conflicts_on_create = "OVERWRITE"
-#   resolve_conflicts_on_update = "OVERWRITE"
+  addon_version               = var.addon_efs_csi_version
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "OVERWRITE"
 
-#   depends_on = [
-#     aws_eks_access_entry.nodes
-#   ]
-# }
+  depends_on = [
+    aws_eks_access_entry.nodes
+  ]
+}
 
-# resource "aws_eks_addon" "s3_csi" {
-#   cluster_name = aws_eks_cluster.main.name
-#   addon_name   = "aws-mountpoint-s3-csi-driver"
+resource "aws_eks_addon" "s3_csi" {
+  cluster_name = aws_eks_cluster.main.name
+  addon_name   = "aws-mountpoint-s3-csi-driver"
 
-#   addon_version               = var.addon_s3_csi_version
-#   resolve_conflicts_on_create = "OVERWRITE"
-#   resolve_conflicts_on_update = "OVERWRITE"
+  addon_version               = var.addon_s3_csi_version
+  resolve_conflicts_on_create = "OVERWRITE"
+  resolve_conflicts_on_update = "OVERWRITE"
 
-#   depends_on = [
-#     aws_eks_access_entry.nodes
-#   ]
-# }}
+  depends_on = [
+    aws_eks_access_entry.nodes
+  ]
+}
